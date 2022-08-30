@@ -1,3 +1,3 @@
-# sign_here
+# PDF Sign
 
-Small electron app to add hand signature image to PDF's
+PDF sign APP with Electron node.js
