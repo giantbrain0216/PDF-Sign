@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF Sign</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <!-- Insert this line above script imports  -->
+  <script>
+    // without this, jQuery is loaded into module.exports because this is a Node env
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="js/StripeComponent.js"></script>
+  <script src="js/Stripe.js"></script>
+  <script src="js/DaVinci.js"></script>
+  <script src="js/iconic.min.js"></script>
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from  -->
+  <!-- <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+</head>
+
+<body>
+  <div class="container-fluid d-flex flex-column p-footer vh-100 overflow-hidden">
+    <div class="row no-gutters py-2 h-50px">
+      <div class="col d-flex justify-content-center align-items-center">
+        <h3 class="m-0">Where do I have to put the signature?</h3>
+      </div>
+    </div>
+    <div class="row no-gutters py-2 h-50px">
+      <div class="col d-flex justify-content-center align-items-center">
+        <input id="target-text" type="text" class="w-50 bg-white">
+      </div>
+    </div>
+    <!-- First row -->
+    <!-- Second row -->
+    <div class="row no-gutters py-2 h-70px">
+      <div class="col d-flex justify-content-center align-items-center overflow-hidden">
+        <button id="pdf" type="button" class="btn btn-info my-2 rounded-pill w-75">
+          Choose PDF's
+        </button>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <button id="signature" type="button" class="btn btn-info my-2 rounded-pill w-75">
+          Choose signature
+        </button>
+      </div>
+    </div>
+    <!-- Third row -->
+    <div class="row no-gutters py-3 flex-1 overflow-auto">
+      <div class="col d-flex justify-content-center align-items-start mh-100">
+        <div class="overflow-auto mh-100 w-100">
+          <div id="files-list" class="w-100 m-0 px-3 bg-white rounded"></div>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-start">
+        <div id="signature-view" class="w-50 bg-white rounded"></div>
+      </div>
+    </div>
+    <!-- Settings -->
+    <div class="settings fixed-bottom fixed-left p-2 show-user-settings">
+      <img src="./open-iconic/svg/cog.svg" alt="cog" class="iconic iconic-md w-100">
+    </div>
+    <!-- Signing status -->
+    <div class="fixed-bottom d-flex justify-content-center bg-white footer-button py-2">
+      <!-- #sign-all button -->
+      <button id="sign-all" type="button" class="btn btn-info rounded-pill w-25 position-absolute" disabled>
+        Go for it!
+      </button>
+      <!-- signing progress bar -->
+      <div class="rounded-pill w-25 position-absolute invisible progress-wrapper">
+        <div class="progress rounded-pill h-100">
+          <div class="progress-bar w-100" role="progressbar">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User settings -->
+    <div class="user-settings-wrapper d-flex justify-content-center align-items-center">
+      <div class="user-settings position-relative d-flex justify-content-center align-items-center rounded">
+        <button type="button" class="close-user-settings position-absolute bg-danger rounded" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <label for="target-text" class="mr-1 mb-0">Target text</label>
+        <input type="text" id="target-text" placeholder="target text">
+      </div>
+    </div>
+</body>
+
+</html>
